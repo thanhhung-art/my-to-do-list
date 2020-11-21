@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/aa65c1dd72.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <div class="add-note">
+                <input type="text" placeholder="Type something..." id="myInput" >
+                <span id="btn" class="add_btn"><i class="fas fa-plus"></i></span>
+            </div>
+        </div>
+        <ul id="list-note">
+            
+        </ul>
+    </div>
+
+    <script>
+        let add_btn = document.querySelector(".add_btn");
+        let listNote = document.querySelector("#list-note");
+        let textTodo = document.querySelector("#myInput");
+        add_btn.addEventListener("click",()=>{
+            let li = document.createElement("li");
+            li.textContent = textTodo.value;
+            listNote.appendChild(li);
+        })
+        add_btn.addEventListener("keydown",(e)=>{
+            if(e.keyCode == 13){
+
+            }
+        })
+
+    </script>
+</body>
+</html>
