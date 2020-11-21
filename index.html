@@ -16,26 +16,48 @@
                 <span id="btn" class="add_btn"><i class="fas fa-plus"></i></span>
             </div>
         </div>
-        <ul id="list-note">
+        <div class="container-list-note">
+            <ul id="list-note">
             
-        </ul>
+            </ul>
+        </div>
+        
     </div>
 
     <script>
-        let add_btn = document.querySelector(".add_btn");
+        let add_btn = document.querySelector("#btn");
         let listNote = document.querySelector("#list-note");
         let textTodo = document.querySelector("#myInput");
-        add_btn.addEventListener("click",()=>{
-            let li = document.createElement("li");
-            li.textContent = textTodo.value;
-            listNote.appendChild(li);
-        })
-        add_btn.addEventListener("keydown",(e)=>{
-            if(e.keyCode == 13){
+        let delBtn;
 
+        function addNote(){
+            if(textTodo.value == ""){
+                alert("please type something...");
+            }else{
+                let li = document.createElement("li");
+                delBtn = document.createElement("i");
+                delBtn.classList.add("fas","fa-times");
+                li.textContent = textTodo.value;
+                listNote.appendChild(li);
+                li.appendChild(delBtn);
+                textTodo.value = "";
+
+                delBtn.onclick = function() {
+                    listNote.removeChild(li);
+                }
+            }
+        }
+
+        add_btn.addEventListener("click",()=>{
+           addNote();
+        })
+        textTodo.addEventListener("keydown",(e)=>{
+            if(e.keyCode == 13){
+                addNote();
             }
         })
 
+       
     </script>
 </body>
 </html>
